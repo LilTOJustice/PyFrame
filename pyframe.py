@@ -16,10 +16,10 @@ def get(platform: str, route: str) -> dict | list[dict]:
 def get_alerts(platform: str = "pc") -> list[Alert]:
     return [Alert(alert) for alert in get(platform, "alerts")]
 
-def get_arbitration(platform: str = "pc") -> list[Arbitration]:
+def get_arbitration(platform: str = "pc") -> Arbitration:
     return Arbitration(get(platform, "arbitration"))
 
-def get_archon_hunt(platform: str = "pc") -> list[ArchonHunt]:
+def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
 
 if __name__ == "__main__":
