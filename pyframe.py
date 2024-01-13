@@ -3,6 +3,7 @@ import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
+from models.conclave_challenge import ConclaveChallenge
 
 class APIException(Exception):
     pass
@@ -22,6 +23,9 @@ def get_arbitration(platform: str = "pc") -> Arbitration:
 def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
 
+def get_conclave_challenges(platform: str = "pc") -> ConclaveChallenge:
+    return [ConclaveChallenge(conclave_challenge) for conclave_challenge in get(platform, "conclaveChallenges")]
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -29,3 +33,5 @@ if __name__ == "__main__":
     print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
+    print("\nConclave Challenge")
+    print(get_conclave_challenges())
