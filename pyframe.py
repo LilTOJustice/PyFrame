@@ -4,6 +4,7 @@ from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
 from models.cetus_cycle import CetusCycle
+from models.construction_progress import ConstructionProgress
 
 class APIException(Exception):
     pass
@@ -26,6 +27,9 @@ def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
 def get_cetus_cycle(platform: str = "pc") -> CetusCycle:
     return CetusCycle(get(platform, "cetusCycle"))
 
+def get_construction_progress(platform: str = "pc") -> ConstructionProgress:
+    return ConstructionProgress(get(platform, "constructionProgress"))
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -35,3 +39,6 @@ if __name__ == "__main__":
     print(get_archon_hunt())
     print("\nCetus Cycle")
     print(get_cetus_cycle())
+    print("\nConstruction Progress")
+    print(get_construction_progress())
+    
