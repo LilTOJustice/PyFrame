@@ -3,6 +3,7 @@ import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
+from models.cetus_cycle import CetusCycle
 
 class APIException(Exception):
     pass
@@ -22,6 +23,9 @@ def get_arbitration(platform: str = "pc") -> Arbitration:
 def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
 
+def get_cetus_cycle(platform: str = "pc") -> CetusCycle:
+    return CetusCycle(get(platform, "cetusCycle"))
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -29,3 +33,5 @@ if __name__ == "__main__":
     print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
+    print("\nCetus Cycle")
+    print(get_cetus_cycle())
