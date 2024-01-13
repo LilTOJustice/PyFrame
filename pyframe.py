@@ -3,6 +3,7 @@ import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
+from models.cambion_cycle import CambionCycle
 
 class APIException(Exception):
     pass
@@ -22,6 +23,9 @@ def get_arbitration(platform: str = "pc") -> Arbitration:
 def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
 
+def get_cambion_cycle(platform: str = "pc") -> CambionCycle:
+    return CambionCycle(get(platform, "cambionCycle"))
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -29,3 +33,5 @@ if __name__ == "__main__":
     print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
+    print("\nCambion Cycle")
+    print(get_cambion_cycle())
