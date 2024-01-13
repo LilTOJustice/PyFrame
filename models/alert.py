@@ -1,8 +1,8 @@
 from collections import defaultdict
 from dateutil.parser import isoparse
-from models.common import Mission
+from models.common import Mission, WarframeObj
 
-class Alert:
+class Alert(WarframeObj):
     def __init__(self, json_alert: dict):
         json_alert = defaultdict(lambda : None, json_alert)
         self.id = json_alert['id']
@@ -14,6 +14,3 @@ class Alert:
         self.expired = json_alert['expired']
         self.eta = json_alert['eta']
         self.reward_types = json_alert['rewardTypes']
-
-    def __str__(self):
-        return self.__dict__
