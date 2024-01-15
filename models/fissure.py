@@ -3,12 +3,12 @@ from collections import defaultdict
 from dateutil.parser import isoparse
 
 class Fissure(WarframeObj):
-    def __init__(self, json_fissure : dict):
+    def __init__(self, json_fissure: dict):
         json_fissure = defaultdict(lambda : None, json_fissure)
         self.id = json_fissure['id']
         self.activation = isoparse(json_fissure['activation']) if 'activation' in json_fissure else None 
         self.expiry = isoparse(json_fissure['expiry']) if 'expiry' in json_fissure else None 
-        self.start_string = json_fissure['expiry']
+        self.start_string = json_fissure['startString']
         self.active = json_fissure['active']
         self.node = json_fissure['node']
         self.expired = json_fissure['expired']

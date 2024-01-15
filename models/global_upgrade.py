@@ -2,7 +2,7 @@ from models.common import WarframeObj
 from collections import defaultdict
 
 class GlobalUpgrade(WarframeObj):
-    def __init__(self, json_global_upgrade : dict):
+    def __init__(self, json_global_upgrade: dict):
         json_global_upgrade = defaultdict(lambda : None, json_global_upgrade)
         self.start = json_global_upgrade['start']
         self.end = json_global_upgrade['end']

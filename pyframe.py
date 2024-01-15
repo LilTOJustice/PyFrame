@@ -51,3 +51,7 @@ if __name__ == "__main__":
     print(get_archon_hunt())
     print("\nCetus Cycle")
     print(get_cetus_cycle())
+    print("\nDaily Deals")
+    print(get_daily_deals())
+    print("\nGlobal Upgrades")
+    print(get_global_upgrade())
