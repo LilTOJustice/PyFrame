@@ -3,7 +3,11 @@ import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
+from models.event import Event
+from models.conclave_challenge import ConclaveChallenge
+from models.cambion_cycle import CambionCycle
 from models.cetus_cycle import CetusCycle
+from models.construction_progress import ConstructionProgress
 from models.daily_deal import DailyDeal
 from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
@@ -28,8 +32,20 @@ def get_arbitration(platform: str = "pc") -> Arbitration:
 def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
 
+def get_events(platform: str = "pc") -> list[Event]:
+    return [Event(event) for event in get(platform, "events")]
+
+def get_conclave_challenges(platform: str = "pc") -> ConclaveChallenge:
+    return [ConclaveChallenge(conclave_challenge) for conclave_challenge in get(platform, "conclaveChallenges")]
+
+def get_cambion_cycle(platform: str = "pc") -> CambionCycle:
+    return CambionCycle(get(platform, "cambionCycle"))
+
 def get_cetus_cycle(platform: str = "pc") -> CetusCycle:
     return CetusCycle(get(platform, "cetusCycle"))
+
+def get_construction_progress(platform: str = "pc") -> ConstructionProgress:
+    return ConstructionProgress(get(platform, "constructionProgress"))
 
 def get_daily_deals(platform: str = "pc") -> list[DailyDeal]:
     return [DailyDeal(deal) for deal in get(platform, "dailyDeals")]
@@ -53,8 +69,16 @@ if __name__ == "__main__":
     print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
+    print("\nEvents:")
+    print(get_events())
+    print("\nConclave Challenge")
+    print(get_conclave_challenges())
+    print("\nCambion Cycle")
+    print(get_cambion_cycle())
     print("\nCetus Cycle")
     print(get_cetus_cycle())
+    print("\nConstruction Progress")
+    print(get_construction_progress())
     print("\nDaily Deals")
     print(get_daily_deals())
     print("\nGlobal Upgrades")
