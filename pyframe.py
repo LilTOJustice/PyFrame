@@ -12,6 +12,7 @@ from models.daily_deal import DailyDeal
 from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
 from models.global_upgrade import GlobalUpgrade
+from models.sortie import Sortie
 
 class APIException(Exception):
     pass
@@ -55,27 +56,32 @@ def get_earth_cycle(platform: str = "pc") -> EarthCycle:
 def get_fissures(platform: str = "pc") -> list[Fissure]:
     return [Fissure(fissure) for fissure in get(platform, "fissures")]
 
-def get_global_upgrade(platform: str = "pc") -> list[GlobalUpgrade]:
+def get_global_upgrades(platform: str = "pc") -> list[GlobalUpgrade]:
     return [GlobalUpgrade(upgrade) for upgrade in get(platform, "globalUpgrades")]
+
+def get_sortie(platform: str = "pc") -> list[Sortie]:
+    return Sortie(get(platform, "sortie"))
 
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
     print("\nArbitration:")
-    print(get_arbitration())
+    #print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
     print("\nEvents:")
     print(get_events())
-    print("\nConclave Challenge")
+    print("\nConclave Challenge:")
     print(get_conclave_challenges())
-    print("\nCambion Cycle")
+    print("\nCambion Cycle:")
     print(get_cambion_cycle())
-    print("\nCetus Cycle")
+    print("\nCetus Cycle:")
     print(get_cetus_cycle())
-    print("\nConstruction Progress")
+    print("\nConstruction Progress:")
     print(get_construction_progress())
-    print("\nDaily Deals")
+    print("\nDaily Deals:")
     print(get_daily_deals())
-    print("\nGlobal Upgrades")
-    print(get_global_upgrade())
+    print("\nGlobal Upgrades:")
+    print(get_global_upgrades())
+    print("\nSortie:")
+    print(get_sortie())
