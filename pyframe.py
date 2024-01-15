@@ -3,6 +3,7 @@ import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
+from models.conclave_challenge import ConclaveChallenge
 from models.cambion_cycle import CambionCycle
 from models.cetus_cycle import CetusCycle
 from models.daily_deal import DailyDeal
@@ -27,6 +28,9 @@ def get_arbitration(platform: str = "pc") -> Arbitration:
 
 def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
+
+def get_conclave_challenges(platform: str = "pc") -> ConclaveChallenge:
+    return [ConclaveChallenge(conclave_challenge) for conclave_challenge in get(platform, "conclaveChallenges")]
 
 def get_cambion_cycle(platform: str = "pc") -> CambionCycle:
     return CambionCycle(get(platform, "cambionCycle"))
@@ -53,6 +57,8 @@ if __name__ == "__main__":
     print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
+    print("\nConclave Challenge")
+    print(get_conclave_challenges())
     print("\nCambion Cycle")
     print(get_cambion_cycle())
     print("\nCetus Cycle")
