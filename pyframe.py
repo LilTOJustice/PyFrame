@@ -66,7 +66,7 @@ if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
     print("\nArbitration:")
-    #print(get_arbitration())
+    print(get_arbitration())
     print("\nArchon Hunt:")
     print(get_archon_hunt())
     print("\nEvents:")
