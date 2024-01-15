@@ -4,6 +4,12 @@ from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
 from models.conclave_challenge import ConclaveChallenge
+from models.cambion_cycle import CambionCycle
+from models.cetus_cycle import CetusCycle
+from models.daily_deal import DailyDeal
+from models.earth_cycle import EarthCycle
+from models.fissure import Fissure
+from models.global_upgrade import GlobalUpgrade
 
 class APIException(Exception):
     pass
@@ -26,6 +32,24 @@ def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
 def get_conclave_challenges(platform: str = "pc") -> ConclaveChallenge:
     return [ConclaveChallenge(conclave_challenge) for conclave_challenge in get(platform, "conclaveChallenges")]
 
+def get_cambion_cycle(platform: str = "pc") -> CambionCycle:
+    return CambionCycle(get(platform, "cambionCycle"))
+
+def get_cetus_cycle(platform: str = "pc") -> CetusCycle:
+    return CetusCycle(get(platform, "cetusCycle"))
+
+def get_daily_deals(platform: str = "pc") -> list[DailyDeal]:
+    return [DailyDeal(deal) for deal in get(platform, "dailyDeals")]
+
+def get_earth_cycle(platform: str = "pc") -> EarthCycle:
+    return EarthCycle(get(platform, "earthCycle"))
+
+def get_fissures(platform: str = "pc") -> list[Fissure]:
+    return [Fissure(fissure) for fissure in get(platform, "fissures")]
+
+def get_global_upgrade(platform: str = "pc") -> list[GlobalUpgrade]:
+    return [GlobalUpgrade(upgrade) for upgrade in get(platform, "globalUpgrades")]
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -35,3 +59,11 @@ if __name__ == "__main__":
     print(get_archon_hunt())
     print("\nConclave Challenge")
     print(get_conclave_challenges())
+    print("\nCambion Cycle")
+    print(get_cambion_cycle())
+    print("\nCetus Cycle")
+    print(get_cetus_cycle())
+    print("\nDaily Deals")
+    print(get_daily_deals())
+    print("\nGlobal Upgrades")
+    print(get_global_upgrade())
