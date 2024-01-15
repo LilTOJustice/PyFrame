@@ -7,6 +7,7 @@ from models.event import Event
 from models.conclave_challenge import ConclaveChallenge
 from models.cambion_cycle import CambionCycle
 from models.cetus_cycle import CetusCycle
+from models.construction_progress import ConstructionProgress
 from models.daily_deal import DailyDeal
 from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
@@ -42,6 +43,9 @@ def get_cambion_cycle(platform: str = "pc") -> CambionCycle:
 def get_cetus_cycle(platform: str = "pc") -> CetusCycle:
     return CetusCycle(get(platform, "cetusCycle"))
 
+def get_construction_progress(platform: str = "pc") -> ConstructionProgress:
+    return ConstructionProgress(get(platform, "constructionProgress"))
+
 def get_daily_deals(platform: str = "pc") -> list[DailyDeal]:
     return [DailyDeal(deal) for deal in get(platform, "dailyDeals")]
 
@@ -69,6 +73,8 @@ if __name__ == "__main__":
     print(get_cambion_cycle())
     print("\nCetus Cycle")
     print(get_cetus_cycle())
+    print("\nConstruction Progress")
+    print(get_construction_progress())
     print("\nDaily Deals")
     print(get_daily_deals())
     print("\nGlobal Upgrades")

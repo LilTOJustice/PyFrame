@@ -1,7 +1,6 @@
 from models.common import WarframeObj
 from collections import defaultdict
 from dateutil.parser import isoparse
-from models.common import WarframeObj
 
 class CetusCycle(WarframeObj):
     def __init__(self, json_cetus_cycle: dict):
