@@ -85,8 +85,6 @@ if __name__ == "__main__":
     print(get_construction_progress())
     print("\nDaily Deals:")
     print(get_daily_deals())
-    print("\nGlobal Upgrades")
-    print(get_global_upgrade())
     print("\nNews")
     print(get_news())
     print("\nGlobal Upgrades:")
