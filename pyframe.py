@@ -15,6 +15,7 @@ from models.global_upgrade import GlobalUpgrade
 from models.news import News
 from models.sortie import Sortie
 from models.steel_path import SteelPath
+from models.persistent_enemy import PersistentEnemy
 
 class APIException(Exception):
     pass
@@ -73,6 +74,9 @@ def get_steel_path(platform: str = "pc") -> SteelPath:
 def get_flash_sales(platform: str = "pc") -> list[FlashSale]:
     return [FlashSale(flash_sale) for flash_sale in get(platform, "flashSales")]
 
+def get_persistent_enemy(platform: str = "pc") -> list[PersistentEnemy]:
+    return [PersistentEnemy(persistent_enemy) for persistent_enemy in get(platform, "persistentEnemies")]
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -102,3 +106,5 @@ if __name__ == "__main__":
     print(get_steel_path())
     print("\nFlash Sales:")
     print(get_flash_sales())
+    print("\nPersistent Enemy")
+    print(get_persistent_enemy())
