@@ -13,6 +13,7 @@ from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
 from models.global_upgrade import GlobalUpgrade
 from models.sortie import Sortie
+from models.steel_path import SteelPath
 
 class APIException(Exception):
     pass
@@ -62,6 +63,9 @@ def get_global_upgrades(platform: str = "pc") -> list[GlobalUpgrade]:
 def get_sortie(platform: str = "pc") -> list[Sortie]:
     return Sortie(get(platform, "sortie"))
 
+def get_steel_path(platform: str = "pc") -> SteelPath:
+    return SteelPath(get(platform, "steelPath"))
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -85,3 +89,5 @@ if __name__ == "__main__":
     print(get_global_upgrades())
     print("\nSortie:")
     print(get_sortie())
+    print("\nSteel Path") 
+    print(get_steel_path())
