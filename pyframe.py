@@ -12,6 +12,7 @@ from models.daily_deal import DailyDeal
 from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
 from models.global_upgrade import GlobalUpgrade
+from models.news import News
 from models.sortie import Sortie
 
 class APIException(Exception):
@@ -59,6 +60,9 @@ def get_fissures(platform: str = "pc") -> list[Fissure]:
 def get_global_upgrades(platform: str = "pc") -> list[GlobalUpgrade]:
     return [GlobalUpgrade(upgrade) for upgrade in get(platform, "globalUpgrades")]
 
+def get_news(platform: str = "pc") -> list[News]:
+    return [News(news) for news in get(platform, "news")]
+
 def get_sortie(platform: str = "pc") -> list[Sortie]:
     return Sortie(get(platform, "sortie"))
 
@@ -81,6 +85,8 @@ if __name__ == "__main__":
     print(get_construction_progress())
     print("\nDaily Deals:")
     print(get_daily_deals())
+    print("\nNews")
+    print(get_news())
     print("\nGlobal Upgrades:")
     print(get_global_upgrades())
     print("\nSortie:")
