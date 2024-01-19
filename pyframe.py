@@ -1,4 +1,3 @@
-from collections import defaultdict
 import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
@@ -11,6 +10,7 @@ from models.construction_progress import ConstructionProgress
 from models.daily_deal import DailyDeal
 from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
+from models.flash_sale import FlashSale
 from models.global_upgrade import GlobalUpgrade
 from models.news import News
 from models.sortie import Sortie
@@ -70,6 +70,9 @@ def get_sortie(platform: str = "pc") -> list[Sortie]:
 def get_steel_path(platform: str = "pc") -> SteelPath:
     return SteelPath(get(platform, "steelPath"))
 
+def get_flash_sales(platform: str = "pc") -> list[FlashSale]:
+    return [FlashSale(flash_sale) for flash_sale in get(platform, "flashSales")]
+
 if __name__ == "__main__":
     print("Alerts:")
     print(get_alerts())
@@ -97,3 +100,5 @@ if __name__ == "__main__":
     print(get_sortie())
     print("\nSteel Path") 
     print(get_steel_path())
+    print("\nFlash Sales:")
+    print(get_flash_sales())
