@@ -2,13 +2,13 @@ import requests
 from models.alert import Alert
 from models.arbitration import Arbitration
 from models.archon_hunt import ArchonHunt
-from models.event import Event
 from models.conclave_challenge import ConclaveChallenge
 from models.cambion_cycle import CambionCycle
 from models.cetus_cycle import CetusCycle
 from models.construction_progress import ConstructionProgress
 from models.daily_deal import DailyDeal
 from models.earth_cycle import EarthCycle
+from models.event import Event
 from models.fissure import Fissure
 from models.flash_sale import FlashSale
 from models.global_upgrade import GlobalUpgrade
