@@ -16,6 +16,7 @@ from models.news import News
 from models.sortie import Sortie
 from models.steel_path import SteelPath
 from models.persistent_enemy import PersistentEnemy
+from models.worldstate import Worldstate
 
 class APIException(Exception):
     pass
@@ -25,6 +26,9 @@ def get(platform: str, route: str) -> dict | list[dict]:
     if response.status_code != 200:
         raise APIException(f"Call to route '{route}' on platform '{platform}' failed.")
     return response.json()
+
+def get_worldstate(platform: str = "pc") -> Worldstate:
+    return Worldstate(get(platform, ""))
 
 def get_alerts(platform: str = "pc") -> list[Alert]:
     return [Alert(alert) for alert in get(platform, "alerts")]
@@ -78,31 +82,5 @@ def get_persistent_enemy(platform: str = "pc") -> list[PersistentEnemy]:
     return [PersistentEnemy(persistent_enemy) for persistent_enemy in get(platform, "persistentEnemies")]
 
 if __name__ == "__main__":
-    print("Alerts:")
-    print(get_alerts())
-    print("\nArbitration:")
-    print(get_arbitration())
-    print("\nArchon Hunt:")
-    print(get_archon_hunt())
-    print("\nEvents:")
-    print(get_events())
-    print("\nConclave Challenge:")
-    print(get_conclave_challenges())
-    print("\nCambion Cycle:")
-    print(get_cambion_cycle())
-    print("\nCetus Cycle:")
-    print(get_cetus_cycle())
-    print("\nConstruction Progress:")
-    print(get_construction_progress())
-    print("\nDaily Deals:")
-    print(get_daily_deals())
-    print("\nNews")
-    print(get_news())
-    print("\nGlobal Upgrades:")
-    print(get_global_upgrades())
-    print("\nSortie:")
-    print(get_sortie())
-    print("\nSteel Path") 
-    print(get_steel_path())
-    print("\nFlash Sales:")
-    print(get_flash_sales())
+    print("\nWorldstate:")
+    print(get_worldstate())
