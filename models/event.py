@@ -1,17 +1,6 @@
 from collections import defaultdict
-from models.common import Reward, WarframeObj
+from models.common import Reward, WarframeObj, Job
 from dateutil.parser import isoparse
-
-class Job(WarframeObj):
-    def __init__(self, json_job: dict):
-        json_job = defaultdict(lambda : None, json_job)
-        self.activation = isoparse(json_job['activation']) if 'activation' in json_job else None
-        self.expiry = isoparse(json_job['expiry']) if 'expiry' in json_job else None
-        self.reward_pool = json_job['reward_pool'] if 'reward_pool' in json_job else []
-        self.type = json_job['type']
-        self.enemy_levels = json_job['enemyLevels'] if 'enemyLevels' in json_job else []
-        self.standing_stages = json_job['standingStages'] if 'standingStages' in json_job else []
-        self.minMR = json_job['minMR']
 
 class Message(WarframeObj):
     def __init__(self, json_message: dict):

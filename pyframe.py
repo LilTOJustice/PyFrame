@@ -106,5 +106,3 @@ if __name__ == "__main__":
     print(get_steel_path())
     print("\nFlash Sales:")
     print(get_flash_sales())
-    print("\nPersistent Enemy")
-    print(get_persistent_enemy())
