@@ -12,10 +12,17 @@ from models.earth_cycle import EarthCycle
 from models.fissure import Fissure
 from models.flash_sale import FlashSale
 from models.global_upgrade import GlobalUpgrade
+from models.invasion import Invasion
+from models.kuva import Kuva
 from models.news import News
+from models.nightwave import Nightwave
+from models.persistent_enemy import PersistentEnemy
+from models.simaris import Simaris
 from models.sortie import Sortie
 from models.steel_path import SteelPath
-from models.persistent_enemy import PersistentEnemy
+from models.syndicate_mission import SyndicateMission
+from models.vallis_cycle import VallisCycle
+from models.void_trader import VoidTrader
 from models.worldstate import Worldstate
 
 class APIException(Exception):
@@ -39,17 +46,14 @@ def get_arbitration(platform: str = "pc") -> Arbitration:
 def get_archon_hunt(platform: str = "pc") -> ArchonHunt:
     return ArchonHunt(get(platform, "archonHunt"))
 
-def get_events(platform: str = "pc") -> list[Event]:
-    return [Event(event) for event in get(platform, "events")]
-
-def get_conclave_challenges(platform: str = "pc") -> ConclaveChallenge:
-    return [ConclaveChallenge(conclave_challenge) for conclave_challenge in get(platform, "conclaveChallenges")]
-
 def get_cambion_cycle(platform: str = "pc") -> CambionCycle:
     return CambionCycle(get(platform, "cambionCycle"))
 
 def get_cetus_cycle(platform: str = "pc") -> CetusCycle:
     return CetusCycle(get(platform, "cetusCycle"))
+
+def get_conclave_challenges(platform: str = "pc") -> ConclaveChallenge:
+    return [ConclaveChallenge(conclave_challenge) for conclave_challenge in get(platform, "conclaveChallenges")]
 
 def get_construction_progress(platform: str = "pc") -> ConstructionProgress:
     return ConstructionProgress(get(platform, "constructionProgress"))
@@ -60,14 +64,35 @@ def get_daily_deals(platform: str = "pc") -> list[DailyDeal]:
 def get_earth_cycle(platform: str = "pc") -> EarthCycle:
     return EarthCycle(get(platform, "earthCycle"))
 
+def get_events(platform: str = "pc") -> list[Event]:
+    return [Event(event) for event in get(platform, "events")]
+
 def get_fissures(platform: str = "pc") -> list[Fissure]:
     return [Fissure(fissure) for fissure in get(platform, "fissures")]
+
+def get_flash_sales(platform: str = "pc") -> list[FlashSale]:
+    return [FlashSale(flash_sale) for flash_sale in get(platform, "flashSales")]
 
 def get_global_upgrades(platform: str = "pc") -> list[GlobalUpgrade]:
     return [GlobalUpgrade(upgrade) for upgrade in get(platform, "globalUpgrades")]
 
+def get_invasions(platform: str = "pc") -> list[Invasion]:
+    return [Invasion(invasion) for invasion in get(platform, "invasions")]
+
+def get_kuva(platform: str = "pc") -> list[Kuva]:
+    return [Kuva(kuva) for kuva in get(platform, "kuva")]
+    
 def get_news(platform: str = "pc") -> list[News]:
     return [News(news) for news in get(platform, "news")]
+
+def get_nightwave(platform: str = "pc") -> Nightwave:
+    return Nightwave(get(platform, "nightwave"))
+
+def get_persistent_enemy(platform: str = "pc") -> list[PersistentEnemy]:
+    return [PersistentEnemy(persistent_enemy) for persistent_enemy in get(platform, "persistentEnemies")]
+
+def get_simaris(platform: str = "pc") -> Simaris:
+    return Simaris(get(platform, "simaris"))
 
 def get_sortie(platform: str = "pc") -> list[Sortie]:
     return Sortie(get(platform, "sortie"))
@@ -75,11 +100,14 @@ def get_sortie(platform: str = "pc") -> list[Sortie]:
 def get_steel_path(platform: str = "pc") -> SteelPath:
     return SteelPath(get(platform, "steelPath"))
 
-def get_flash_sales(platform: str = "pc") -> list[FlashSale]:
-    return [FlashSale(flash_sale) for flash_sale in get(platform, "flashSales")]
+def get_syndicate_mission(platform: str = "pc") -> list[SyndicateMission]:
+    return [SyndicateMission(syndicate_mission) for syndicate_mission in get(platform, "syndicateMissions")]
 
-def get_persistent_enemy(platform: str = "pc") -> list[PersistentEnemy]:
-    return [PersistentEnemy(persistent_enemy) for persistent_enemy in get(platform, "persistentEnemies")]
+def get_vallis_cycle(platform: str = "pc") -> VallisCycle:
+    return VallisCycle(platform, "vallisCycle")
+
+def get_void_trader(platform: str = "pc") -> VoidTrader:
+    return VoidTrader(platform, "voidTrader")
 
 if __name__ == "__main__":
     print("\nWorldstate:")
