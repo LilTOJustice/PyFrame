@@ -1,2 +1,2 @@
 # PyFrame
-A simple (but hopefully complete) python API wrapper
+A simple (but hopefully complete) python API wrapper for https://docs.warframestat.us
