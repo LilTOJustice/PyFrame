@@ -6,7 +6,7 @@ required = ["python-dateutil"]
 
 setuptools.setup(
     name="python-PyFrame",
-    version="1.0.0",
+    version="1.0.1",
     author="LilTOJustice",
     author_email="muianick4@gmail.com",
     license=liscense,
@@ -14,8 +14,7 @@ setuptools.setup(
     long_description=long_desc,
     long_description_content_type="text/markdown",
     url="https://github.com/LilTOJustice/PyFrame",
-    key_words="<KEY WORDS>", # TODO: Change me next update
     install_requires=required,
-    packages=setuptools.find_packages(where="src"),
+    packages=setuptools.find_packages(),
     python_requires=">=3.6",
 )
