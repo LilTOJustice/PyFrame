@@ -104,7 +104,7 @@ def get_syndicate_mission(platform: str = "pc") -> list[SyndicateMission]:
     return [SyndicateMission(syndicate_mission) for syndicate_mission in get(platform, "syndicateMissions")]
 
 def get_vallis_cycle(platform: str = "pc") -> VallisCycle:
-    return VallisCycle(platform, "vallisCycle")
+    return VallisCycle(get(platform, "vallisCycle"))
 
 def get_void_trader(platform: str = "pc") -> VoidTrader:
-    return VoidTrader(platform, "voidTrader")
+    return VoidTrader(get(platform, "voidTrader"))
