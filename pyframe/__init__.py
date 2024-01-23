@@ -108,7 +108,3 @@ def get_vallis_cycle(platform: str = "pc") -> VallisCycle:
 
 def get_void_trader(platform: str = "pc") -> VoidTrader:
     return VoidTrader(platform, "voidTrader")
-
-if __name__ == "__main__":
-    print("\nWorldstate:")
-    print(get_worldstate())
