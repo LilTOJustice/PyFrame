@@ -1,5 +1,5 @@
 from collections import defaultdict
-from models.common import Reward, WarframeObj, Job
+from pyframe.models.common import Reward, WarframeObj, Job
 from dateutil.parser import isoparse
 
 class Message(WarframeObj):

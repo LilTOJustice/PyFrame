@@ -1,5 +1,5 @@
 from collections import defaultdict
-from models.common import WarframeObj
+from pyframe.models.common import WarframeObj
 from dateutil.parser import isoparse
 
 class Kuva(WarframeObj):

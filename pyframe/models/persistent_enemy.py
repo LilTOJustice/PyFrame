@@ -1,6 +1,6 @@
 from collections import defaultdict
 from dateutil.parser import isoparse
-from models.common import WarframeObj
+from pyframe.models.common import WarframeObj
 
 class PersistentEnemy(WarframeObj):
     def __init__(self, json_persistent_enemy: dict):

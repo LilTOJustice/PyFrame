@@ -6,7 +6,7 @@ required = ["python-dateutil"]
 
 setuptools.setup(
     name="python-PyFrame",
-    version="1.0.2",
+    version="1.0.4",
     author="LilTOJustice",
     author_email="muianick4@gmail.com",
     license=liscense,

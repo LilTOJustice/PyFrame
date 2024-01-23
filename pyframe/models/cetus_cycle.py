@@ -1,4 +1,4 @@
-from models.common import WarframeObj
+from pyframe.models.common import WarframeObj
 from collections import defaultdict
 from dateutil.parser import isoparse
 
