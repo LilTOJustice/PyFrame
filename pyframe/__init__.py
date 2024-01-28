@@ -1,29 +1,29 @@
 import requests
-from models.alert import Alert
-from models.arbitration import Arbitration
-from models.archon_hunt import ArchonHunt
-from models.conclave_challenge import ConclaveChallenge
-from models.cambion_cycle import CambionCycle
-from models.cetus_cycle import CetusCycle
-from models.construction_progress import ConstructionProgress
-from models.daily_deal import DailyDeal
-from models.earth_cycle import EarthCycle
-from models.event import Event
-from models.fissure import Fissure
-from models.flash_sale import FlashSale
-from models.global_upgrade import GlobalUpgrade
-from models.invasion import Invasion
-from models.kuva import Kuva
-from models.news import News
-from models.nightwave import Nightwave
-from models.persistent_enemy import PersistentEnemy
-from models.simaris import Simaris
-from models.sortie import Sortie
-from models.steel_path import SteelPath
-from models.syndicate_mission import SyndicateMission
-from models.vallis_cycle import VallisCycle
-from models.void_trader import VoidTrader
-from models.worldstate import Worldstate
+from pyframe.models.alert import Alert
+from pyframe.models.arbitration import Arbitration
+from pyframe.models.archon_hunt import ArchonHunt
+from pyframe.models.conclave_challenge import ConclaveChallenge
+from pyframe.models.cambion_cycle import CambionCycle
+from pyframe.models.cetus_cycle import CetusCycle
+from pyframe.models.construction_progress import ConstructionProgress
+from pyframe.models.daily_deal import DailyDeal
+from pyframe.models.earth_cycle import EarthCycle
+from pyframe.models.event import Event
+from pyframe.models.fissure import Fissure
+from pyframe.models.flash_sale import FlashSale
+from pyframe.models.global_upgrade import GlobalUpgrade
+from pyframe.models.invasion import Invasion
+from pyframe.models.kuva import Kuva
+from pyframe.models.news import News
+from pyframe.models.nightwave import Nightwave
+from pyframe.models.persistent_enemy import PersistentEnemy
+from pyframe.models.simaris import Simaris
+from pyframe.models.sortie import Sortie
+from pyframe.models.steel_path import SteelPath
+from pyframe.models.syndicate_mission import SyndicateMission
+from pyframe.models.vallis_cycle import VallisCycle
+from pyframe.models.void_trader import VoidTrader
+from pyframe.models.worldstate import Worldstate
 
 class APIException(Exception):
     pass
@@ -104,11 +104,7 @@ def get_syndicate_mission(platform: str = "pc") -> list[SyndicateMission]:
     return [SyndicateMission(syndicate_mission) for syndicate_mission in get(platform, "syndicateMissions")]
 
 def get_vallis_cycle(platform: str = "pc") -> VallisCycle:
-    return VallisCycle(platform, "vallisCycle")
+    return VallisCycle(get(platform, "vallisCycle"))
 
 def get_void_trader(platform: str = "pc") -> VoidTrader:
-    return VoidTrader(platform, "voidTrader")
-
-if __name__ == "__main__":
-    print("\nWorldstate:")
-    print(get_worldstate())
+    return VoidTrader(get(platform, "voidTrader"))

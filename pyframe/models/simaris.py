@@ -1,5 +1,5 @@
 from collections import defaultdict
-from models.common import WarframeObj
+from pyframe.models.common import WarframeObj
 
 class Simaris(WarframeObj):
     def __init__(self, json_simaris: dict):

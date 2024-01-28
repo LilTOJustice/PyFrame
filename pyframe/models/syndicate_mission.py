@@ -1,6 +1,6 @@
 from collections import defaultdict
 from dateutil.parser import isoparse
-from models.common import WarframeObj, Job
+from pyframe.models.common import WarframeObj, Job
 
 class SyndicateMission(WarframeObj):
     def __init__(self, json_syndicate_mission: dict):

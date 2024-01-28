@@ -1,4 +1,4 @@
-from models.common import WarframeObj
+from pyframe.models.common import WarframeObj
 
 # THIS API IS DEPRECATED
 class DarkSector(WarframeObj):

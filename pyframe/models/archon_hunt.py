@@ -1,6 +1,6 @@
 from collections import defaultdict
 from dateutil.parser import isoparse
-from models.common import WarframeObj, Mission
+from pyframe.models.common import WarframeObj, Mission
 
 class ArchonHunt(WarframeObj):
     def __init__(self, json_archon_hunt: dict):

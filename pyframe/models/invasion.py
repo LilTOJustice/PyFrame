@@ -1,5 +1,5 @@
 from collections import defaultdict
-from models.common import Reward, WarframeObj
+from pyframe.models.common import Reward, WarframeObj
 from dateutil.parser import isoparse
 
 class AttackerDefender(WarframeObj):
