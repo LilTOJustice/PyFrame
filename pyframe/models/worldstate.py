@@ -25,11 +25,12 @@ from pyframe.models.steel_path import SteelPath
 from pyframe.models.syndicate_mission import SyndicateMission
 from pyframe.models.vallis_cycle import VallisCycle
 from pyframe.models.void_trader import VoidTrader
+from dateutil.parser import isoparse
 
 class Worldstate(WarframeObj):
     def __init__(self, json_worldstate: dict):
         json_worldstate = defaultdict(lambda : None, json_worldstate)
-        self.timestamp = json_worldstate['timestamp']
+        self.timestamp = isoparse(json_worldstate['timestamp']) if 'timestamp' in json_worldstate else None
         self.alerts = [Alert(alert) for alert in json_worldstate['alerts']] if 'alerts' in json_worldstate else []
         self.arbitration = Arbitration(json_worldstate['arbitration']) if 'arbitration' in json_worldstate else None
         self.archon_hunt = ArchonHunt(json_worldstate['archonHunt']) if 'archonHunt' in json_worldstate else None
