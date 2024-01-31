@@ -1,4 +1,4 @@
-from collections import defaultdict
+from datetime import datetime
 from pyframe.models.alert import Alert
 from pyframe.models.arbitration import Arbitration
 from pyframe.models.archon_hunt import ArchonHunt
@@ -28,8 +28,7 @@ from pyframe.models.void_trader import VoidTrader
 
 class Worldstate(WarframeObj):
     def __init__(self, json_worldstate: dict):
-        json_worldstate = defaultdict(lambda : None, json_worldstate)
-        self.timestamp = json_worldstate['timestamp']
+        self.timestamp = datetime.fromisoformat(json_worldstate['timestamp']) if 'timestamp' in json_worldstate else None
         self.alerts = [Alert(alert) for alert in json_worldstate['alerts']] if 'alerts' in json_worldstate else []
         self.arbitration = Arbitration(json_worldstate['arbitration']) if 'arbitration' in json_worldstate else None
         self.archon_hunt = ArchonHunt(json_worldstate['archonHunt']) if 'archonHunt' in json_worldstate else None

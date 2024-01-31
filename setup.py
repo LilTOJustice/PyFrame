@@ -2,11 +2,11 @@ import setuptools
 
 long_desc = open("README.md").read()
 liscense = open("LICENSE").read()
-required = ["python-dateutil"]
+required = []
 
 setuptools.setup(
     name="python-PyFrame",
-    version="1.0.5",
+    version="1.0.6",
     author="LilTOJustice",
     author_email="muianick4@gmail.com",
     license=liscense,

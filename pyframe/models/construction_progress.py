@@ -1,11 +1,9 @@
 from pyframe.models.common import WarframeObj
-from collections import defaultdict
 
 class ConstructionProgress(WarframeObj):
     def __init__(self, json_construction_progress: dict):
-        json_construction_progress = defaultdict(lambda : None, json_construction_progress)
-        self.id = json_construction_progress['id']
-        self.fomorian_progress = json_construction_progress['fomorianProgress']
-        self.razorback_progress = json_construction_progress['razorbackProgress']
-        self.unknown_progress = json_construction_progress['unkownProgress']
+        self.id = str(json_construction_progress['id']) if 'id' in json_construction_progress else None
+        self.fomorian_progress = str(json_construction_progress['fomorianProgress']) if 'fomorianProgress' in json_construction_progress else None
+        self.razorback_progress = str(json_construction_progress['razorbackProgress']) if 'razorbackProgress' in json_construction_progress else None
+        self.unknown_progress = str(json_construction_progress['unkownProgress']) if 'unkownProgress' in json_construction_progress else None
     

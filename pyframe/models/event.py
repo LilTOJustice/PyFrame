@@ -1,71 +1,64 @@
-from collections import defaultdict
-from pyframe.models.common import Reward, WarframeObj, Job
-from dateutil.parser import isoparse
+from pyframe.models.common import Reward, WarframeObj, Job, isoparse
 
 class Message(WarframeObj):
     def __init__(self, json_message: dict):
-        json_message = defaultdict(lambda : None, json_message)
-        self.sender = json_message['sender']
-        self.subject = json_message['subject']
-        self.message = json_message['message']
-        self.sender_icon = json_message['senderIcon']
-        self.attachments = json_message['attachments'] if 'attachments' in json_message else []
+        self.sender = str(json_message['sender']) if 'sender' in json_message else None
+        self.subject = str(json_message['subject']) if 'subject' in json_message else None
+        self.message = str(json_message['message']) if 'message' in json_message else None
+        self.sender_icon = str(json_message['senderIcon']) if 'senderIcon' in json_message else None
+        self.attachments = list[str](json_message['attachments']) if 'attachments' in json_message else []
 
 class InterimStep(WarframeObj):
     def __init__(self, json_interim_step: dict):
-        json_interim_step = defaultdict(lambda : None, json_interim_step)
-        self.goal = json_interim_step['goal']
+        self.goal = int(json_interim_step['goal']) if 'goal' in json_interim_step else None
         self.reward = Reward(json_interim_step['reward']) if 'reward' in json_interim_step else None
         self.message = Message(json_interim_step['message']) if 'message' in json_interim_step else None
-        self.winner_count = json_interim_step['winnerCount']
+        self.winner_count = int(json_interim_step['winnerCount']) if 'winnerCount' in json_interim_step else None
 
 class ProgressStep(WarframeObj):
     def __init__(self, json_progress_step: dict):
-        json_progress_step = defaultdict(lambda : None, json_progress_step)
-        self.type = json_progress_step['type']
-        self.progress_amt = json_progress_step['progressAmt']
+        self.type = str(json_progress_step['type']) if 'type' in json_progress_step else None
+        self.progress_amt = int(json_progress_step['progressAmt']) if 'progressAmt' in json_progress_step else None
 
 class Alt(WarframeObj):
     def __init__(self, json_alt: dict):
-        json_alt = defaultdict(lambda : None, json_alt)
         self.expiry = isoparse(json_alt['expiry']) if 'expiry' in json_alt else None
         self.activation = isoparse(json_alt['activation']) if 'activation' in json_alt else None
 
 class Event(WarframeObj):
     def __init__(self, json_event: dict):
-        json_event = defaultdict(lambda : None, json_event)
-        self.id = json_event['id']
+        self.id = str(json_event['id']) if 'id' in json_event else None
         self.activation = isoparse(json_event['activation']) if 'activation' in json_event else None
         self.expiry = isoparse(json_event['expiry']) if 'expiry' in json_event else None
-        self.start_string = json_event['startString']
-        self.active = json_event['active']
-        self.maximum_score = json_event['maximumScore']
-        self.current_score = json_event['currentScore']
-        self.small_interval = json_event['smallInterval']
-        self.large_interval = json_event['largeInterval']
-        self.faction = json_event['faction']
-        self.description = json_event['description']
-        self.tooltip = json_event['tooltip']
-        self.node = json_event['node']
-        self.concurrent_nodes = json_event['concurrent_nodes'] if 'concurrent_nodes' in json_event else []
-        self.victim_node = json_event['victimNode']
-        self.score_loc_tag = json_event['scoreLocTag']
+        self.start_string = str(json_event['startString']) if 'startString' in json_event else None
+        self.active = bool(json_event['active']) if 'active' in json_event else None
+        self.maximum_score = int(json_event['maximumScore']) if 'maximumScore' in json_event else None
+        self.current_score = int(json_event['currentScore']) if 'currentScore' in json_event else None
+        self.small_interval = int(json_event['smallInterval']) if 'smallInterval' in json_event else None
+        self.large_interval = int(json_event['largeInterval']) if 'largeInterval' in json_event else None
+        self.faction = str(json_event['faction']) if 'faction' in json_event else None
+        self.description = str(json_event['description']) if 'description' in json_event else None
+        self.tooltip = str(json_event['tooltip']) if 'tooltip' in json_event else None
+        self.node = str(json_event['node']) if 'node' in json_event else None
+        self.concurrent_nodes = list[str](json_event['concurrent_nodes']) if 'concurrent_nodes' in json_event else []
+        self.victim_node = str(json_event['victimNode']) if 'victimNode' in json_event else None
+        self.score_loc_tag = str(json_event['scoreLocTag']) if 'scoreLocTag' in json_event else None
         self.rewards = [Reward(reward) for reward in json_event['rewards']] if 'rewards' in json_event else []
-        self.health = json_event['health']
-        self.affiliated_with = json_event['affiliatedWith']
+        self.health = int(json_event['health']) if 'health' in json_event else None
+        self.affiliated_with = str(json_event['affiliatedWith']) if 'affiliatedWith' in json_event else None
         self.jobs = [Job(job) for job in json_event['jobs']] if 'jobs' in json_event else []
         self.interim_steps = [InterimStep(interim_step) for interim_step in json_event['interimSteps']] if 'interimSteps' in json_event else []
         self.progress_steps = [ProgressStep(progress_step) for progress_step in json_event['progressSteps']] if 'progressSteps' in json_event else []
-        self.progress_total = json_event['progressTotal']
-        self.show_total_at_end_of_mission = json_event['showTotalAtEndOfMission']
-        self.is_personal = json_event['isPersonal']
-        self.is_comminity = json_event['isCommunity']
-        self.region_drops = json_event['regionDrops'] if 'regionDrops' in json_event else []
-        self.archwing_drops = json_event['archwingDrops'] if 'archwingDrops' in json_event else []
-        self.as_string = json_event['asString']
-        self.metadata = json_event['metadata']
-        self.completion_bonuses = json_event['completionBonuses'] if 'completionBonuses' in json_event else []
-        self.score_var = json_event['scoreVar']
-        self.alt_expiry = json_event['altExpiry']
-        self.alt_activation = json_event['altActivation']
+        self.progress_total = int(json_event['progressTotal']) if 'progressTotal' in json_event else None
+        self.show_total_at_end_of_mission = bool(json_event['showTotalAtEndOfMission']) if 'showTotalAtEndOfMission' in json_event else None
+        self.is_personal = bool(json_event['isPersonal']) if 'isPersonal' in json_event else None
+        self.is_comminity = bool(json_event['isCommunity']) if 'isCommunity' in json_event else None
+        self.region_drops = list[str](json_event['regionDrops']) if 'regionDrops' in json_event else []
+        self.archwing_drops = list[str](json_event['archwingDrops']) if 'archwingDrops' in json_event else []
+        self.as_string = str(json_event['asString']) if 'asString' in json_event else None
+        self.metadata = dict[str, any](json_event['metadata']) if 'metadata' in json_event else {}
+        self.completion_bonuses = list[int](json_event['completionBonuses']) if 'completionBonuses' in json_event else []
+        self.score_var = str(json_event['scoreVar']) if 'scoreVar' in json_event else None
+        self.alt_expiry = str(json_event['altExpiry']) if 'altExpiry' in json_event else None
+        self.alt_activation = str(json_event['altActivation']) if 'altActivation' in json_event else None
         self.next_alt = Alt(json_event['nextAlt']) if 'nextAlt' in json_event else None
