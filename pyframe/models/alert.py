@@ -1,5 +1,4 @@
-from dateutil.parser import isoparse
-from pyframe.models.common import Mission, WarframeObj
+from pyframe.models.common import Mission, WarframeObj, isoparse
 
 class Alert(WarframeObj):
     def __init__(self, json_alert: dict):

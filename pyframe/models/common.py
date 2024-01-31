@@ -1,5 +1,9 @@
+from datetime import datetime, timezone
 from pprint import PrettyPrinter
-from dateutil.parser import isoparse
+
+def isoparse(date: str):
+    newDate = date[:-1] if date[-1] == 'Z' else date
+    return datetime.fromisoformat(newDate).replace(tzinfo = timezone.utc)
 
 pp = PrettyPrinter(indent = 4, width = 150)
 

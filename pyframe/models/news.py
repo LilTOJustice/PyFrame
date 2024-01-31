@@ -1,5 +1,4 @@
-from dateutil.parser import isoparse
-from pyframe.models.common import WarframeObj
+from pyframe.models.common import WarframeObj, isoparse
 
 class News(WarframeObj):
     def __init__(self, json_news: dict):

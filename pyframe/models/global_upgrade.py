@@ -1,5 +1,4 @@
-from pyframe.models.common import WarframeObj
-from dateutil.parser import isoparse
+from pyframe.models.common import WarframeObj, isoparse
 
 class GlobalUpgrade(WarframeObj):
     def __init__(self, json_global_upgrade: dict):

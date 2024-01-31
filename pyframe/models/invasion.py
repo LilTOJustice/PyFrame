@@ -1,5 +1,4 @@
-from pyframe.models.common import Reward, WarframeObj
-from dateutil.parser import isoparse
+from pyframe.models.common import Reward, WarframeObj, isoparse
 
 class AttackerDefender(WarframeObj):
     def __init__(self, json_attacker: dict):

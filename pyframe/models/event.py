@@ -1,5 +1,4 @@
-from pyframe.models.common import Reward, WarframeObj, Job
-from dateutil.parser import isoparse
+from pyframe.models.common import Reward, WarframeObj, Job, isoparse
 
 class Message(WarframeObj):
     def __init__(self, json_message: dict):

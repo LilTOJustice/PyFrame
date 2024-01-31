@@ -1,5 +1,4 @@
-from dateutil.parser import isoparse
-from pyframe.models.common import WarframeObj, Mission
+from pyframe.models.common import WarframeObj, Mission, isoparse
 
 class ArchonHunt(WarframeObj):
     def __init__(self, json_archon_hunt: dict):
